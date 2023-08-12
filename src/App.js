@@ -145,7 +145,7 @@ useEffect( ()=>{
    <li>
     <li>  <UilTemperature/><span>Real feel</span> </li> 
        
-       <span className='wind'>{weather.feels_like}°C</span>
+       <span className='wind'>{`${weather.feels_like} °${units==='metric' ? 'C':'F'}`}</span>
    </li>
    <hr />
    
@@ -172,14 +172,14 @@ useEffect( ()=>{
        <li><UilTemperature/>
        <span>High</span></li>
        
-       <span className='wind'>{weather.temp_max}°C</span>
+       <span className='wind'>{`${weather.temp_max} °${units==='metric' ? 'C':'F'}`}</span>
    </li>
    <hr />
    <li>
        <li><UilTemperature/>
        <span>Low</span></li>
        
-       <span className='wind'>{weather.temp_min}°C</span>
+       <span className='wind'>{`${weather.temp_min} °${units==='metric' ? 'C':'F'}`}</span>
    </li>
    
    
