@@ -43,6 +43,17 @@ function App() {
 const[weather ,setWeather] = useState(" ");
 const[city , setCity] = useState("kota");
 const[citiess , setCitiess] = useState("");
+const[units , setUnits] = useState("metric");
+
+ const handleUnit=(e)=>{
+const button = e.currentTarget;
+const currentUnit = button.innerText.slice(1);
+ const isCelsius = currentUnit === "C";
+ button.innerText = isCelsius ? "°F":"°C";
+ setUnits(isCelsius ? 'metric' : 'imperial');
+
+ }
+
 
 const click = (e)=>{
     e.preventDefault();
@@ -55,12 +66,12 @@ const click = (e)=>{
 
 useEffect( ()=>{
   const fetch = async ()=>{
-    const data = await getFormattedWeatherData(city);
+    const data = await getFormattedWeatherData(city,units);
     setWeather(data);
   };
   fetch();
 
-} , [city])
+} , [city ,units])
 
 
 
@@ -71,13 +82,13 @@ useEffect( ()=>{
     <div className='container'>
        <h3 className='brand'>Sharma Tushar's Weather App</h3>
        <div>
-           <h1 className='temp'>{weather.temp}°C</h1>
+           <h1 className='temp'>{`${weather.temp} °${units==='metric' ? 'C':'F'}`}</h1>
            
            <div className="city-time">
                <h1 className="name">{`${weather.name} `}</h1>
                <small>
-                   <span className='time'>06:59</span>
-                   <span className='date'>Monday sep 19</span>
+                   <span className='time'><button onClick={(e)=>handleUnit(e)}  className='button'>°C</button></span>
+
                </small>
            </div>
            <div className='weather'>
