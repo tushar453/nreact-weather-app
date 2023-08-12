@@ -41,15 +41,15 @@ function App() {
 
 
 const[weather ,setWeather] = useState(" ");
-const[city , setCity] = useState("Jaipur");
+const[city , setCity] = useState("kota");
 const[citiess , setCitiess] = useState("");
 
-const click = (citiess)=>{
-  if(citiess!==' '){
-    setCity(citiess);
-    console.log(citiess);
+const click = (e)=>{
+  if(e.keyCode===13){
+    setCity(e.target.value);
   }
-}
+  }
+
 
 
 useEffect( ()=>{
@@ -59,7 +59,7 @@ useEffect( ()=>{
   };
   fetch();
 
-},[])
+} , [city])
 
 
 
@@ -90,8 +90,8 @@ useEffect( ()=>{
     <div className='panel'>
        <form action="" id="locationInput">
            <input type="text" className='search' placeholder='search location'
-           value={citiess}
-        onChange={(e)=>setCitiess(e.currentTarget.value)}
+           value={city}
+        onKeyDown={click}
            
            />
            <button className="submit" type='submit'>
