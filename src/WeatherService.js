@@ -8,6 +8,7 @@ const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${A
 
 const data = await fetch(URL).then((res)=>res.json()).then((data)=>data);
 const{weather,
+    
 main:{temp , feels_like , temp_min , temp_max,humidity},
 wind:{speed},
 sys:{country , sunrise , sunset , },

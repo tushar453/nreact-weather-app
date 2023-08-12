@@ -5,7 +5,7 @@ import bg from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
 import cold from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
 import { useEffect, useState } from 'react';
 import { getFormattedWeatherData } from './WeatherService';
-import { UilSearch ,UilClouds  ,UilReact,UilTemperature, UilTear,UilWind,UilSun,UilSunset } from '@iconscout/react-unicons'
+import { UilSearch ,UilMapPinAlt,UilClouds  ,UilReact,UilTemperature, UilTear,UilWind,UilSun,UilSunset } from '@iconscout/react-unicons'
 // import UilReact from '@iconscout/react-unicons/icons/uil-react'
 
 function App() {
@@ -63,7 +63,7 @@ const click = (e)=>{
  
   }
 
-
+  
 
 
 
@@ -117,6 +117,8 @@ useEffect( ()=>{
          <img src={weather.iconURL} alt="" />
          <span condition>
           {weather.description}</span>
+
+          <span><UilMapPinAlt  size={25} className="text-white cursor-pointer transition ease-out hover:scale-125"/></span>
            </div>
        </div>
    
