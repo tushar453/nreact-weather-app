@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import './component/Top.css';
 import bg from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
-import cold from './img/chan-hoi-uj-w-v7OFT4-unsplash.jpg'
+import cold from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
 import { useEffect, useState } from 'react';
 import { getFormattedWeatherData } from './WeatherService';
 import { UilSearch ,UilClouds  ,UilReact,UilTemperature, UilTear,UilWind,UilSun,UilSunset } from '@iconscout/react-unicons'
