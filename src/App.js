@@ -89,10 +89,17 @@ useEffect( ()=>{
 
   return (
 
-
+//  background-size: cover;
+// background-position: center;
+// background-repeat: no-repeat;
+// color: #fff;
+// position: relative;
+// transition: 500ms;
+// opacity: 1;
     <div className='weather-app'  style={{
         backgroundImage: `url(${bgs})`,
-        height: "300px", backgroundRepeat: "no-repeat"
+        backgroundSize :"cover", backgroundRepeat: "no-repeat"
+        
       }}>
     <div className='container'>
        <h3 className='brand'>Sharma Tushar's Weather App</h3>
