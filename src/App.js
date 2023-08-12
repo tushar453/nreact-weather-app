@@ -69,7 +69,7 @@ useEffect( ()=>{
 
     <div className='weather-app'>
     <div className='container'>
-       <h3 className='brand'>the weather</h3>
+       <h3 className='brand'>Sharma Tushar's Weather App</h3>
        <div>
            <h1 className='temp'>{weather.temp}°C</h1>
            
