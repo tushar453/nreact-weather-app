@@ -45,9 +45,10 @@ const[city , setCity] = useState("kota");
 const[citiess , setCitiess] = useState("");
 
 const click = (e)=>{
-  if(e.keyCode===13){
-    setCity(e.target.value);
-  }
+    e.preventDefault();
+    setCity(citiess);
+    console.log(citiess);
+ 
   }
 
 
@@ -90,19 +91,19 @@ useEffect( ()=>{
     <div className='panel'>
        <form action="" id="locationInput">
            <input type="text" className='search' placeholder='search location'
-           value={city}
-        onKeyDown={click}
+           value={citiess}
+        onChange={(e)=>setCitiess(e.target.value.toString())}
            
            />
-           <button className="submit" type='submit'>
-              <UilSearch onClick={click}/>
+           <button onClick={click} className="submit" type='submit'>
+              <UilSearch />
            </button>
        </form>
        <ul className='cities'>
        {cities.map((city)=>(
    
            <li>
-   <button  className='city' onClick={()=>setCity(city.title)}  key={city.id} >{city.title}</button></li>
+   <button  className='city' onClick={()=>setCity(city.title)}   key={city.id} >{city.title}</button></li>
    ))}
        </ul>
        <ul className='details'>
