@@ -1,9 +1,10 @@
 import React from 'react'
-import './Top.css';
+
+
 import rega from '../weather/64x64/day/113.png';
 
 import { UilSearch ,UilClouds  ,UilReact,UilTemperature, UilTear,UilWind,UilSun,UilSunset } from '@iconscout/react-unicons'
-const TopButton = () => {
+const TopButton = (props) => {
     const cities = [ 
         {
         id:1,
@@ -40,17 +41,18 @@ const TopButton = () => {
  <div className='container'>
     <h3 className='brand'>the weather</h3>
     <div>
-        <h1 className='temp'>16</h1>
+        <h1 className='temp'>{props.weather.temp}</h1>
+        
         <div className="city-time">
-            <h1 className="name">london</h1>
+            <h1 className="name">{props.weather.name}</h1>
             <small>
                 <span className='time'>06:59</span>
                 <span className='date'>Monday sep 19</span>
             </small>
         </div>
         <div className='weather'>
-      <img src={rega} alt="" />
-      <span condition>Cloudy</span>
+      <img src={props.weather.iconURL} alt="" />
+      <span condition>{props.weather.description}</span>
         </div>
     </div>
 
@@ -75,7 +77,7 @@ const TopButton = () => {
     <li> <UilClouds/>
     <span>cloudy</span></li>
    
-    <span className='cloud'>89%</span>
+    <span className='cloud'>{props.weather.description}</span>
 </li>
 <hr />
 
@@ -84,20 +86,20 @@ const TopButton = () => {
     
 
    
-    <span className="humidity">64%</span>
+    <span className="humidity">{props.weather.humidity}%</span>
 </li>
 <hr />
 <li>
     <li><UilWind/><span>Wind</span> </li>
 
-    <span className='wind'>8km/h</span>
+    <span className='wind'>{props.weather.speed.toFixed()}kmph</span>
 </li>
 <hr />
 
 <li>
  <li>  <UilTemperature/><span>Real feel</span> </li> 
     
-    <span className='wind'>8km/h</span>
+    <span className='wind'>{props.weather.feels_like.toFixed()}°C</span>
 </li>
 <hr />
 
@@ -107,7 +109,7 @@ const TopButton = () => {
     <li>  <UilSun/><span>Rise</span></li>
   
     
-    <span className='wind'>8km/h</span>
+    <span className='wind'>{props.weather.sunrise.toFixed()}A.M.</span>
 </li>
 <hr />
 
@@ -117,21 +119,21 @@ const TopButton = () => {
     <li> <UilSunset/>
     <span>Set</span></li>
    
-    <span className='wind'>8km/h</span>
+    <span className='wind'>{props.weather.sunset}p.m.</span>
 </li>
 <hr />
 <li>
     <li><UilTemperature/>
     <span>High</span></li>
     
-    <span className='wind'>8km/h</span>
+    <span className='wind'>{props.weather.temp_max.toFixed()}°C</span>
 </li>
 <hr />
 <li>
     <li><UilTemperature/>
     <span>Low</span></li>
     
-    <span className='wind'>8km/h</span>
+    <span className='wind'>{props.weather.temp_min.toFixed()}°C</span>
 </li>
 
 
