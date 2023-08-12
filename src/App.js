@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import './component/Top.css';
-
+import bg from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
+import cold from './img/chan-hoi-uj-w-v7OFT4-unsplash.jpg'
 import { useEffect, useState } from 'react';
 import { getFormattedWeatherData } from './WeatherService';
 import { UilSearch ,UilClouds  ,UilReact,UilTemperature, UilTear,UilWind,UilSun,UilSunset } from '@iconscout/react-unicons'
@@ -44,7 +45,7 @@ const[weather ,setWeather] = useState(" ");
 const[city , setCity] = useState("kota");
 const[citiess , setCitiess] = useState("");
 const[units , setUnits] = useState("metric");
-
+const[bgs , setbgs] = useState(bg);
  const handleUnit=(e)=>{
 const button = e.currentTarget;
 const currentUnit = button.innerText.slice(1);
@@ -64,10 +65,21 @@ const click = (e)=>{
 
 
 
+
+
+
 useEffect( ()=>{
   const fetch = async ()=>{
     const data = await getFormattedWeatherData(city,units);
     setWeather(data);
+   const thresold = units === 'metric' ? 20 : 60  ;
+   if(data.temp <= thresold ) setbgs(bg);
+   else setbgs(cold);
+
+
+ 
+
+
   };
   fetch();
 
@@ -78,7 +90,10 @@ useEffect( ()=>{
   return (
 
 
-    <div className='weather-app'>
+    <div className='weather-app'  style={{
+        backgroundImage: `url(${bgs})`,
+        height: "300px", backgroundRepeat: "no-repeat"
+      }}>
     <div className='container'>
        <h3 className='brand'>Sharma Tushar's Weather App</h3>
        <div>
