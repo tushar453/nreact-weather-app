@@ -114,6 +114,14 @@ h1 , h3{
     margin-bottom: 3em;
 }
 
+.city-name{
+    margin-right: 10px;
+}
+
+.curents{
+    margin-top: 5px;
+}
+
 .submit{
     position: absolute;
     top: 0;
@@ -193,12 +201,18 @@ h1 , h3{
         width: 100%;
         top: initial;
     }
+    .temp{
+        font-size: 30px;
+    }
     
 }
 
 @media screen and (max-width:500px) {
     body{
         font-size: 12px;
+    }
+    .temp{
+        font-size: 20px;
     }
 }
 

@@ -4,9 +4,15 @@ import './component/Top.css';
 import bg from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
 import cold from './img/valentin-muller-bWtd1ZyEy6w-unsplash.jpg'
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { getFormattedWeatherData } from './WeatherService';
 import { UilSearch ,UilMapPinAlt,UilClouds  ,UilReact,UilTemperature, UilTear,UilWind,UilSun,UilSunset } from '@iconscout/react-unicons'
+import { getDefaultNormalizer } from '@testing-library/react';
 // import UilReact from '@iconscout/react-unicons/icons/uil-react'
+
+const API_endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
+const API_key= `15c5b4f036b1199846a87d9662a18268`;
+
 
 function App() {
   const cities = [ 
@@ -46,6 +52,11 @@ const[city , setCity] = useState("kota");
 const[citiess , setCitiess] = useState("");
 const[units , setUnits] = useState("metric");
 const[bgs , setbgs] = useState(bg);
+const[citys , setcitys] = useState("");
+const[latitude ,setLatitude] = useState('');
+const[longitude ,setLongitude] =useState('');
+const[responses , setResponse] = useState({});
+
  const handleUnit=(e)=>{
 const button = e.currentTarget;
 const currentUnit = button.innerText.slice(1);
@@ -53,18 +64,50 @@ const currentUnit = button.innerText.slice(1);
  button.innerText = isCelsius ? "°F":"°C";
  setUnits(isCelsius ? 'metric' : 'imperial');
 
+
+
+
+
  }
+
+
+
+
+ 
+
+
+
+
+
+
+
 
 
 const click = (e)=>{
     e.preventDefault();
     setCity(citiess);
-    console.log(citiess);
+    // console.log(citiess);
  
   }
 
+  const fetched = ()=>{
+    navigator.geolocation.getCurrentPosition((position)=>{
+        
+        setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);  
+      
+    });
+    
+      axios.get(`${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_key}`).then(async(response)=>{
+    
+       setResponse(response.data);
+       await console.log(response.data);
+       
+      }
+       )
+    }
   
-
+  
 
 
 
@@ -83,10 +126,24 @@ useEffect( ()=>{
   };
   fetch();
 
-} , [city ,units])
+ 
 
 
 
+
+
+
+
+
+
+
+
+
+
+} , [city ,units,citys,latitude,longitude])
+
+
+console.log(citys);
   return (
 
 //  background-size: cover;
@@ -102,6 +159,7 @@ useEffect( ()=>{
         
       }}>
     <div className='container'>
+      
        <h3 className='brand'>Sharma Tushar's Weather App</h3>
        <div>
            <h1 className='temp'>{`${weather.temp} °${units==='metric' ? 'C':'F'}`}</h1>
@@ -118,10 +176,22 @@ useEffect( ()=>{
          <span condition>
           {weather.description}</span>
 
-          <span><UilMapPinAlt  size={25} className="text-white cursor-pointer transition ease-out hover:scale-125"/></span>
+          <span><UilMapPinAlt  onClick={fetched} size={25} className="text-white cursor-pointer transition ease-out hover:scale-125"/></span>
+         
            </div>
        </div>
+
+       <div className='curent'>
+         <span id='time' className='city-name'>{responses.name}</span>
+         <span id='city-temp'></span>
+       </div>
    
+
+       <div className='curents'>
+         <span id='city-time' className='city-name'></span>
+         <span id='city-temp'></span>°C
+       </div>
+
     </div>
     <div className='panel'>
        <form action="" id="locationInput">
