@@ -100,7 +100,7 @@ const click = (e)=>{
     
       axios.get(`${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_key}`).then(async(response)=>{
     
-    //   setResponse(response.data);
+      setResponse(response.data);
     //    await console.log(response.data);
     
     const tempe = response.data.main.temp - 273;
@@ -163,7 +163,7 @@ console.log(citys);
       }}>
     <div className='container'>
       
-       <h3 className='brand'>Sharma Tushar's Weather App</h3>
+       <h3 className='brand'>sharma Tushar's Weather App</h3>
        <div>
            <h1 className='temp'>{`${weather.temp} °${units==='metric' ? 'C':'F'}`}</h1>
            
@@ -185,7 +185,7 @@ console.log(citys);
        </div>
 
        <div className='curent'>
-         <span id='time' className='city-name'></span>
+         <span id='time' className='city-name'>{responses.name}</span>
          <span id='city-temp'></span>
        </div>
    
