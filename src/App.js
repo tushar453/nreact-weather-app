@@ -100,8 +100,9 @@ const click = (e)=>{
     
       axios.get(`${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_key}`).then(async(response)=>{
     
-      setResponse(response.data);
-       await console.log(response.data);
+    //   setResponse(response.data);
+    //    await console.log(response.data);
+alert(response.data.name);
        
       }
        )
@@ -182,8 +183,8 @@ console.log(citys);
        </div>
 
        <div className='curent'>
-         <span id='time' className='city-name'>{responses.name}</span>
-         <span id='city-temp'>{responses.main.temp}</span>
+         <span id='time' className='city-name'></span>
+         <span id='city-temp'></span>
        </div>
    
 
