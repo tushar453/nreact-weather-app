@@ -102,7 +102,9 @@ const click = (e)=>{
     
     //   setResponse(response.data);
     //    await console.log(response.data);
-alert(response.data.name);
+    
+    const tempe = response.data.main.temp - 273;
+alert(`${response.data.name} ${tempe.toFixed()}°C` );
        
       }
        )
