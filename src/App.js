@@ -100,7 +100,7 @@ const click = (e)=>{
     
       axios.get(`${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_key}`).then(async(response)=>{
     
-       setResponse(response.data);
+      setResponse(response.data);
        await console.log(response.data);
        
       }
@@ -140,7 +140,7 @@ useEffect( ()=>{
 
 
 
-} , [city ,units,citys,latitude,longitude])
+} , [city ,units,citys,latitude,longitude,responses])
 
 
 console.log(citys);
@@ -183,7 +183,7 @@ console.log(citys);
 
        <div className='curent'>
          <span id='time' className='city-name'>{responses.name}</span>
-         <span id='city-temp'></span>
+         <span id='city-temp'>{responses.main.temp}</span>
        </div>
    
 
