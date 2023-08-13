@@ -192,7 +192,7 @@ console.log(citys);
 
        <div className='curents'>
          <span id='city-time' className='city-name'></span>
-         <span id='city-temp'></span>°C
+         <span id='city-temp'></span>
        </div>
 
     </div>
